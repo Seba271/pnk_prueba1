@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity ahora no tiene el intent-filter -->
+        <!-- MainActivity ahora no stiene el intent-filter -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
