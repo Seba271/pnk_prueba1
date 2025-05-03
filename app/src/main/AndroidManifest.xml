@@ -15,7 +15,7 @@
         android:theme="@style/Theme.WebService"
         tools:targetApi="31">
 
-        <!-- Teodoro nalgon :3 Hacer que SplashActivity sea la actividad principal  -->
+        <!-- Teodoro tulon :3 Hacer que SplashActivity sea la actividad principal  -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
