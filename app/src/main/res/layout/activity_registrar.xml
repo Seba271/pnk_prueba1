@@ -7,4 +7,74 @@
     android:layout_height="match_parent"
     tools:context=".Registrar">
 
+    <TextView
+        android:id="@+id/txtnombre"
+        android:layout_width="168dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Nombre"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtapellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtapellido"
+        android:layout_width="168dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Apellido"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtemail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtemail"
+        android:layout_width="168dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="40dp"
+        android:hint="Email"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_registro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btn_registro"
+        android:layout_width="168dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="24dp"
+        android:hint="Contraseña"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_registrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="199dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="224dp"
+        android:text="Registrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrar Usuario"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtnombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533" />
 </androidx.constraintlayout.widget.ConstraintLayout>
