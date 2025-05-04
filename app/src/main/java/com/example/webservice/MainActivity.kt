@@ -17,13 +17,17 @@ import java.util.Calendar
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-
+    //variables de clima
     lateinit var fecha: TextView
     lateinit var temp: TextView
     lateinit var hum: TextView
     lateinit var imagenTemp: ImageView
     lateinit var datos: RequestQueue
     val mHandler = Handler(Looper.getMainLooper())
+    //funcionamiento de ampolleta
+    var refrescoActivo = true
+    lateinit var imagenAmpolleta: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,21 @@ class MainActivity : AppCompatActivity() {
 
         // Iniciamos refresco automático
         mHandler.post(refrescar)
+
+        imagenAmpolleta = findViewById(R.id.imagen_ampolleta)
+
+        imagenAmpolleta.setOnClickListener {
+            refrescoActivo = !refrescoActivo // Cambia el estado
+
+            if (refrescoActivo) {
+                imagenAmpolleta.setImageResource(R.drawable.ampolleta_on)
+                mHandler.post(refrescar) // Reanuda el refresco
+            } else {
+                imagenAmpolleta.setImageResource(R.drawable.ampolleta_off)
+                mHandler.removeCallbacks(refrescar) // Detiene el refresco
+            }
+        }
+
     }
 
     // Función para obtener fecha y hora
