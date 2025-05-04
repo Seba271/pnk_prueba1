@@ -5,85 +5,95 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorFondo"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imagen_logo"
-        android:layout_width="189dp"
-        android:layout_height="139dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="195dp"
+        android:layout_height="146dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@drawable/iot" />
 
     <ImageView
         android:id="@+id/imagen_temp"
-        android:layout_width="88dp"
-        android:layout_height="163dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="119dp"
+        android:layout_height="182dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/imagen_logo"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.918"
         app:srcCompat="@drawable/tempbaja" />
-
-    <TextView
-        android:id="@+id/txt_temp"
-        android:layout_width="159dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="164dp"
-        android:text="Temperatura"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_humedad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imagen_temp" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="89dp"
-        android:layout_height="198dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/imagen_ampolleta"
+        android:layout_width="121dp"
+        android:layout_height="187dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="188dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txt_humedad"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/humedad" />
+
+    <TextView
+        android:id="@+id/txt_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="324dp"
+        android:text="Temperatura"
+        android:textColor="@color/colorTextoGeneral"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_humedad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintStart_toEndOf="@+id/imagen_temp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txt_humedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="248dp"
+        android:layout_marginBottom="268dp"
         android:text="Humedad"
+        android:textColor="@color/colorTextoGeneral"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
-        app:layout_constraintStart_toEndOf="@+id/imageView4" />
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:text="Fecha"
+        android:textColor="@color/colorTextoGeneral"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imagen_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
     <ImageView
         android:id="@+id/imagen_ampolleta"
-        android:layout_width="120dp"
-        android:layout_height="119dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="118dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
