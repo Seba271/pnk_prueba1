@@ -26,45 +26,17 @@
         android:layout_height="182dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.918"
+        app:layout_constraintVertical_bias="0.916"
         app:srcCompat="@drawable/tempbaja" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="121dp"
-        android:layout_height="187dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="188dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txt_humedad"
-        app:layout_constraintHorizontal_bias="0.18"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/humedad" />
-
-    <TextView
-        android:id="@+id/txt_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="324dp"
-        android:text="Temperatura"
-        android:textColor="@color/colorTextoGeneral"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/txt_humedad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.336"
-        app:layout_constraintStart_toEndOf="@+id/imagen_temp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txt_humedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
+        android:layout_marginBottom="248dp"
         android:text="Humedad"
         android:textColor="@color/colorTextoGeneral"
         android:textSize="24sp"
@@ -72,6 +44,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.726"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Temperatura"
+        android:textColor="@color/colorTextoGeneral"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_humedad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toEndOf="@+id/imagen_temp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.606" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="121dp"
+        android:layout_height="187dp"
+        android:layout_marginStart="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txt_humedad"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73"
+        app:srcCompat="@drawable/humedad" />
 
     <TextView
         android:id="@+id/txt_fecha"
