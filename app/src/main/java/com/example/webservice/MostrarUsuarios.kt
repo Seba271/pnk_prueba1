@@ -56,6 +56,12 @@ class MostrarUsuarios : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        CargarLista()
+    }
+
+
     // Método para obtener los usuarios desde la base de datos
     private fun listaUsuario(): ArrayList<String> {
         val datos = ArrayList<String>()

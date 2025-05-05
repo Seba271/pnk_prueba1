@@ -44,6 +44,31 @@ class ModificarEliminar : AppCompatActivity() {
         clav.setText(clave)
         repclav.setText(repclave)
 
+        mod.setOnClickListener {
+            modificar(idusu, nom.text.toString(), ape.text.toString())
+            onBackPressedDispatcher.onBackPressed()
+        }
+        elim.setOnClickListener {
+            eliminar(idusu)
+            onBackPressedDispatcher.onBackPressed()
+        }
+
 
     }
+
+    private fun modificar(id: Int, nombre: String, apellido: String) {
+        val helper = ConexionDbHelper(this)
+        val db = helper.writableDatabase
+        val sql = "UPDATE USUARIOS SET NOMBRE='$nombre', APELLIDO='$apellido' WHERE ID=$id"
+        db.execSQL(sql)
+        db.close()
+    }
+    private fun eliminar(id: Int) {
+        val helper = ConexionDbHelper(this)
+        val db = helper.writableDatabase
+        val sql = "DELETE FROM USUARIOS WHERE ID=$id"
+        db.execSQL(sql)
+        db.close()
+    }
+
 }
