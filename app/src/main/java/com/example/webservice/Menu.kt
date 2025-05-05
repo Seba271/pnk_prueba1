@@ -18,20 +18,30 @@ class Menu : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Botón para registrar un usuario
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
         btnRegistrar.setOnClickListener {
             val intent = Intent(this, Registrar::class.java)
             startActivity(intent)
         }
 
-        val loginButton = findViewById<Button>(R.id.buttonabout) // Usa el ID real de tu
+        // Botón para mostrar los usuarios
+        val btnMostrarUsuarios = findViewById<Button>(R.id.btnMostrarUsuarios) // Asegúrate de tener este botón en tu XML
+        btnMostrarUsuarios.setOnClickListener {
+            val intent = Intent(this, MostrarUsuarios::class.java) // Redirige a la actividad MostrarUsuarios
+            startActivity(intent)
+        }
 
+        // Botón para la pantalla "AcercaDe"
+        val loginButton = findViewById<Button>(R.id.buttonabout)
         loginButton.setOnClickListener {
             val intent = Intent(this, AcercaDe::class.java)
             startActivity(intent)
         }
-        val capButton = findViewById<Button>(R.id.buttoncapture) // Usa el ID real de tu
 
+        // Botón para capturar datos
+        val capButton = findViewById<Button>(R.id.buttoncapture)
         capButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
