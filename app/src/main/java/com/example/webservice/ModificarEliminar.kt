@@ -28,7 +28,7 @@ class ModificarEliminar : AppCompatActivity() {
         }
         nom = findViewById(R.id.txtnombremod)
         ape = findViewById(R.id.txtapellidomod)
-        clav = findViewById(R.id.txtrepclavemod)
+        clav = findViewById(R.id.txtclavemod)
         repclav = findViewById(R.id.txtrepclavemod)
         mod = findViewById(R.id.btn_modificar)
         elim = findViewById(R.id.btn_eliminar)

@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtrepclavemod"
+        app:layout_constraintTop_toBottomOf="@+id/txtclavemod"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtapellidomod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtnombre" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtapellidomod"
@@ -37,24 +37,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Apellidos"
-        app:layout_constraintBottom_toTopOf="@+id/txtrepclavemod"
+        app:layout_constraintBottom_toTopOf="@+id/txtnombremod"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtapellido" />
+        app:layout_constraintTop_toBottomOf="@id/txtclavemod" />
 
     <EditText
-        android:id="@+id/txtrepclavemod"
+        android:id="@+id/txtclavemod"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Clave"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <Button
         android:id="@+id/btn_modificar"

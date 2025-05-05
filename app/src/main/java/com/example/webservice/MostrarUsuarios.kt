@@ -24,21 +24,35 @@ class MostrarUsuarios : AppCompatActivity() {
         CargarLista()
         // Configurar el listener para el clic en un elemento de la lista
         listado.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
+            AdapterView.OnItemClickListener { _, _, position, _ ->
                 val item = listausuario[position]
                 val datos = item.split(" ")
                 if (datos.size >= 3) {
                     val idusu = datos[0].toIntOrNull() ?: 0
                     val nombre = datos[1]
                     val apellido = datos[2]
+
+                    // Obtener la clave desde la base de datos (sin mostrarla)
+                    val helper = ConexionDbHelper(this)
+                    val db = helper.readableDatabase
+                    val cursor = db.rawQuery("SELECT clave FROM USUARIOS WHERE id = ?", arrayOf(idusu.toString()))
+                    var clave = ""
+                    if (cursor.moveToFirst()) {
+                        clave = cursor.getString(0)
+                    }
+                    cursor.close()
+                    db.close()
+
                     val intent = Intent(this@MostrarUsuarios, ModificarEliminar::class.java).apply {
                         putExtra("Id", idusu)
                         putExtra("Nombre", nombre)
                         putExtra("Apellido", apellido)
+                        putExtra("clave", clave)
                     }
                     startActivity(intent)
                 }
             }
+
 
     }
 
