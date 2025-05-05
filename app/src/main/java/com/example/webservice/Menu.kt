@@ -18,6 +18,12 @@ class Menu : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        btnRegistrar.setOnClickListener {
+            val intent = Intent(this, Registrar::class.java)
+            startActivity(intent)
+        }
+
         val loginButton = findViewById<Button>(R.id.buttonabout) // Usa el ID real de tu
 
         loginButton.setOnClickListener {
