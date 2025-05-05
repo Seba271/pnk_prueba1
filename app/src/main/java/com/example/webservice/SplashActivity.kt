@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
 
         // Hacer que el Splash se muestre durante 5 segundos antes de redirigir
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)  // Redirigir a MainActivity
+            val intent = Intent(this, Login::class.java)  // Redirigir a MainActivity
             startActivity(intent)
             finish()  // Termina la actividad de Splash para que no puedan volver
         }, 5000) // 5000 milisegundos = 5 segundos

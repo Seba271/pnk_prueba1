@@ -27,7 +27,7 @@
             android:name=".Menu"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".MainActivity"
             android:exported="false" /> <!-- Teodoro toxa :3 Hacer que SplashActivity sea la actividad principal -->
         <activity
             android:name=".SplashActivity"
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity> <!-- MainActivity ahora no stiene el intent-filter -->
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true" />
     </application>
 
