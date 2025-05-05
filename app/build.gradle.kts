@@ -48,6 +48,7 @@ dependencies {
 
     implementation("com.android.volley:volley:1.2.1")
     implementation ("com.airbnb.android:lottie:5.0.3")
+    implementation("com.github.f0ris.sweetalert:library:1.6.2")
 
 
 

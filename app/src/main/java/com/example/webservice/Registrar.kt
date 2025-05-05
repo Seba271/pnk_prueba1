@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import cn.pedant.SweetAlert.SweetAlertDialog
 
 class Registrar : AppCompatActivity() {
 
@@ -63,15 +64,13 @@ class Registrar : AppCompatActivity() {
     }
 
     private fun mostrarAlertaCamposVacios() {
-        // Si ya integraste SweetAlertDialog
-        // SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-        //     .setTitleText("Campos incompletos")
-        //     .setContentText("Por favor, complete todos los campos antes de continuar.")
-        //     .setConfirmText("Aceptar")
-        //     .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
-        //     .show()
-
-        // Temporal con Toast si aún no está agregado SweetAlert
-        Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show()
+        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+            .setTitleText("Campos incompletos")
+            .setContentText("Por favor, complete todos los campos antes de continuar.")
+                .setConfirmText("Aceptar")
+                .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+                .show()
     }
+
+
 }
