@@ -3,6 +3,7 @@ package com.example.webservice
 import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,6 +16,7 @@ class Registrar : AppCompatActivity() {
     private lateinit var apellido: EditText
     private lateinit var email: EditText
     private lateinit var clave: EditText
+    private lateinit var repetirClave: EditText
     private lateinit var btn_reg: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,7 @@ class Registrar : AppCompatActivity() {
         apellido = findViewById(R.id.txtapellido)
         email = findViewById(R.id.txtemail)
         clave = findViewById(R.id.txtclave)
+        repetirClave = findViewById(R.id.txtrepetirclave)
         btn_reg = findViewById(R.id.btn_registro)
 
         btn_reg.setOnClickListener {
@@ -32,16 +35,31 @@ class Registrar : AppCompatActivity() {
             val apellidoText = apellido.text.toString().trim()
             val emailText = email.text.toString().trim()
             val claveText = clave.text.toString().trim()
+            val repetirClaveText = repetirClave.text.toString().trim()
 
-            if (nombreText.isBlank() || apellidoText.isBlank() || emailText.isBlank() || claveText.isBlank()) {
-                mostrarAlertaCamposVacios()
-            } else {
-                guardar(nombreText, apellidoText, emailText, claveText)
-                val intent = Intent(this, MostrarUsuarios::class.java)
-                startActivity(intent)
-                finish()
+            when {
+                nombreText.isBlank() || apellidoText.isBlank() || emailText.isBlank() ||
+                        claveText.isBlank() || repetirClaveText.isBlank() -> {
+                    mostrarAlertaCamposVacios()
+                }
+                !esEmailValido(emailText) -> {
+                    mostrarAlertaEmailInvalido()
+                }
+                claveText != repetirClaveText -> {
+                    mostrarAlertaClavesNoCoinciden()
+                }
+                else -> {
+                    guardar(nombreText, apellidoText, emailText, claveText)
+                    val intent = Intent(this, MostrarUsuarios::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
         }
+    }
+
+    private fun esEmailValido(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     private fun guardar(nom: String, ape: String, mai: String, cla: String) {
@@ -67,10 +85,26 @@ class Registrar : AppCompatActivity() {
         SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
             .setTitleText("Campos incompletos")
             .setContentText("Por favor, complete todos los campos antes de continuar.")
-                .setConfirmText("Aceptar")
-                .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
-                .show()
+            .setConfirmText("Aceptar")
+            .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+            .show()
     }
 
+    private fun mostrarAlertaClavesNoCoinciden() {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText("Error")
+            .setContentText("Las contraseñas no coinciden.")
+            .setConfirmText("Intentar de nuevo")
+            .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+            .show()
+    }
 
+    private fun mostrarAlertaEmailInvalido() {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText("Correo inválido")
+            .setContentText("Ingrese un correo electrónico válido.")
+            .setConfirmText("Entendido")
+            .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+            .show()
+    }
 }

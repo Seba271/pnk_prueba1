@@ -7,53 +7,64 @@
 
     <EditText
         android:id="@+id/txtnombre"
-        android:hint="Nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:hint="Nombres"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtapellido"
-        android:hint="Apellido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtnombre"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+        android:hint="Apellidos"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtnombre" />
 
     <EditText
         android:id="@+id/txtemail"
-        android:hint="Email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/txtapellido"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/txtclave"
-        android:hint="Clave"
-        android:inputType="textPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Clave"
+        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/txtemail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtrepetirclave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Repetir Clave"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/txtclave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/btn_registro"
-        android:text="Registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtclave"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="Registrar"
+        app:layout_constraintTop_toBottomOf="@id/txtrepetirclave"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
