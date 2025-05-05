@@ -1,8 +1,10 @@
 package com.example.webservice
 
 import android.content.ContentValues
+import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,24 @@ class MostrarUsuarios : AppCompatActivity() {
 
         // Cargar los usuarios desde la base de datos
         CargarLista()
+        // Configurar el listener para el clic en un elemento de la lista
+        listado.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                val item = listausuario[position]
+                val datos = item.split(" ")
+                if (datos.size >= 3) {
+                    val idusu = datos[0].toIntOrNull() ?: 0
+                    val nombre = datos[1]
+                    val apellido = datos[2]
+                    val intent = Intent(this@MostrarUsuarios, ModificarEliminar::class.java).apply {
+                        putExtra("Id", idusu)
+                        putExtra("Nombre", nombre)
+                        putExtra("Apellido", apellido)
+                    }
+                    startActivity(intent)
+                }
+            }
+
     }
 
     // Método para obtener los usuarios desde la base de datos
