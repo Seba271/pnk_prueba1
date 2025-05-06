@@ -5,30 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0C0CCE"
+    android:backgroundTintMode="screen"
     tools:context=".Menu">
 
     <ImageView
         android:id="@+id/fondo"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:alpha="0.9"
         android:scaleType="centerCrop"
         android:src="@drawable/smashfondo"
-        android:alpha="0.9"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/overlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#50000000"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -38,7 +39,7 @@
         android:layout_marginTop="72dp"
         android:gravity="center"
         android:text="Bienvenido a CRUD + IOT"
-        android:textColor="#000000"
+        android:textColor="#ffff"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +49,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="343dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="265dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="152dp"
+        android:hapticFeedbackEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        app:srcCompat="@drawable/smashfuego" />
+        app:srcCompat="@drawable/fuegosmash" />
 
     <Button
         android:id="@+id/btnRegistrar"

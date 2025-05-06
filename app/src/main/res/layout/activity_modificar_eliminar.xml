@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/txtnombremod"
         android:layout_width="361dp"
-        android:layout_height="45dp"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
         android:hint="Nombres"
