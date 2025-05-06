@@ -9,78 +9,105 @@
 
     <EditText
         android:id="@+id/txtnombremod"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
+        android:layout_marginTop="30dp"
         android:hint="Nombres"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
         android:id="@+id/txtapellidomod"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
         android:hint="Apellidos"
-        app:layout_constraintTop_toBottomOf="@id/txtnombremod"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtnombremod" />
 
     <EditText
         android:id="@+id/txtemailmod"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/txtapellidomod"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtapellidomod" />
 
     <EditText
         android:id="@+id/txtclavemod"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
         android:hint="Clave"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtemailmod"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtemailmod" />
 
     <EditText
         android:id="@+id/txtrepclavemod"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="51dp"
         android:layout_margin="16dp"
         android:hint="Repetir clave"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/txtclavemod"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txtclavemod" />
 
     <Button
         android:id="@+id/btn_modificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Modificar"
-        app:layout_constraintTop_toBottomOf="@id/txtrepclavemod"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_eliminar"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtrepclavemod"
+        app:layout_constraintVertical_bias="0.16" />
 
     <Button
         android:id="@+id/btn_eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="64dp"
         android:backgroundTint="#E91E63"
         android:text="Eliminar"
-        app:layout_constraintTop_toBottomOf="@id/txtrepclavemod"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtrepclavemod"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="Modifica o Elimina"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

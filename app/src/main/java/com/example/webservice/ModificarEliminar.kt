@@ -101,6 +101,10 @@ class ModificarEliminar : AppCompatActivity() {
                         .show()
                 }
             }
+            val btnVolver: Button = findViewById(R.id.btnVolver)
+            btnVolver.setOnClickListener {
+                finish() // Esto cierra esta actividad y vuelve a la anterior
+            }
         }
 
         // Confirmar y eliminar usuario
@@ -163,4 +167,5 @@ class ModificarEliminar : AppCompatActivity() {
         db.execSQL(sql)
         db.close()
     }
+
 }
