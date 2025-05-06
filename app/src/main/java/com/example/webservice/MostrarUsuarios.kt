@@ -63,6 +63,11 @@ class MostrarUsuarios : AppCompatActivity() {
                 return true
             }
         })
+        val btnVolver: Button = findViewById(R.id.btnVolver)
+        btnVolver.setOnClickListener {
+            finish() // Esto cierra esta actividad y vuelve a la anterior
+        }
+
     }
 
     override fun onStart() {
