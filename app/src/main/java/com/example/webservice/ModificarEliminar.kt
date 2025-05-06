@@ -62,7 +62,6 @@ class ModificarEliminar : AppCompatActivity() {
             val repClaveTxt = repclav.text.toString().trim()
 
             when {
-                // Verificar si algún campo está vacío
                 nombreTxt.isBlank() -> {
                     mostrarAlerta("Error", "El nombre no puede estar vacío.")
                 }
@@ -71,6 +70,9 @@ class ModificarEliminar : AppCompatActivity() {
                 }
                 emailTxt.isBlank() -> {
                     mostrarAlerta("Error", "El correo electrónico no puede estar vacío.")
+                }
+                !esEmailValido(emailTxt) -> {
+                    mostrarAlerta("Error", "El correo electrónico no es válido.")
                 }
                 claveTxt.isBlank() -> {
                     mostrarAlerta("Error", "La contraseña no puede estar vacía.")
@@ -83,6 +85,9 @@ class ModificarEliminar : AppCompatActivity() {
                         .setTitleText("Error")
                         .setContentText("Las contraseñas no coinciden.")
                         .show()
+                }
+                !esClaveRobusta(claveTxt) -> {
+                    mostrarAlerta("Error", "La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales.")
                 }
                 else -> {
                     modificar(idusu, nombreTxt, apellidoTxt, emailTxt, claveTxt)
@@ -98,21 +103,33 @@ class ModificarEliminar : AppCompatActivity() {
             }
         }
 
-        // Eliminar los datos
+        // Confirmar y eliminar usuario
         elim.setOnClickListener {
-            eliminar(idusu)
-            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Eliminado")
-                .setContentText("Usuario eliminado correctamente")
-                .setConfirmClickListener {
-                    it.dismiss()
-                    onBackPressedDispatcher.onBackPressed()
+            SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("¿Estás seguro?")
+                .setContentText("Esta acción eliminará el usuario permanentemente.")
+                .setConfirmText("Sí, eliminar")
+                .setCancelText("Cancelar")
+                .setConfirmClickListener { dialog ->
+                    eliminar(idusu)
+                    dialog.dismissWithAnimation()
+
+                    SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Eliminado")
+                        .setContentText("Usuario eliminado correctamente")
+                        .setConfirmClickListener {
+                            it.dismiss()
+                            onBackPressedDispatcher.onBackPressed()
+                        }
+                        .show()
+                }
+                .setCancelClickListener {
+                    it.dismissWithAnimation()
                 }
                 .show()
         }
     }
 
-    // Función para mostrar alertas de error
     private fun mostrarAlerta(titulo: String, mensaje: String) {
         SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
             .setTitleText(titulo)
@@ -120,7 +137,17 @@ class ModificarEliminar : AppCompatActivity() {
             .show()
     }
 
-    // Función para modificar los datos en la base de datos
+    // Función para validar correo electrónico
+    private fun esEmailValido(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    // Validación de la contraseña robusta
+    private fun esClaveRobusta(clave: String): Boolean {
+        val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`])[A-Za-z\\d!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`]{8,}$")
+        return regex.matches(clave)
+    }
+
     private fun modificar(id: Int, nombre: String, apellido: String, correo: String, clave: String) {
         val helper = ConexionDbHelper(this)
         val db = helper.writableDatabase
@@ -129,7 +156,6 @@ class ModificarEliminar : AppCompatActivity() {
         db.close()
     }
 
-    // Función para eliminar el usuario
     private fun eliminar(id: Int) {
         val helper = ConexionDbHelper(this)
         val db = helper.writableDatabase

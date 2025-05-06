@@ -47,6 +47,9 @@ class Registrar : AppCompatActivity() {
                 claveText != repetirClaveText -> {
                     mostrarAlertaClavesNoCoinciden()
                 }
+                !esClaveRobusta(claveText) -> {
+                    mostrarAlertaClaveRobusta()
+                }
                 else -> {
                     guardar(nombreText, apellidoText, emailText, claveText)
                     mostrarAlertaRegistroExitoso()
@@ -57,6 +60,12 @@ class Registrar : AppCompatActivity() {
 
     private fun esEmailValido(email: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    // ✅ Validación de contraseña robusta
+    private fun esClaveRobusta(clave: String): Boolean {
+        val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$")
+        return regex.matches(clave)
     }
 
     private fun guardar(nom: String, ape: String, mai: String, cla: String) {
@@ -99,6 +108,16 @@ class Registrar : AppCompatActivity() {
         SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
             .setTitleText("Correo inválido")
             .setContentText("Ingrese un correo electrónico válido.")
+            .setConfirmText("Entendido")
+            .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+            .show()
+    }
+
+    // ✅ Alerta cuando la contraseña no sea robusta
+    private fun mostrarAlertaClaveRobusta() {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText("Contraseña débil")
+            .setContentText("La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y un carácter especial.")
             .setConfirmText("Entendido")
             .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
             .show()
