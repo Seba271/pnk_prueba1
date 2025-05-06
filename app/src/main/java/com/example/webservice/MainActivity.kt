@@ -3,6 +3,7 @@ package com.example.webservice
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import java.util.Calendar
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+
     //variables de clima
     lateinit var fecha: TextView
     lateinit var temp: TextView
@@ -57,6 +59,10 @@ class MainActivity : AppCompatActivity() {
                 imagenAmpolleta.setImageResource(R.drawable.ampolleta_off)
                 mHandler.removeCallbacks(refrescar) // Detiene el refresco
             }
+        }
+        val btnVolver: Button = findViewById(R.id.btnVolver)
+        btnVolver.setOnClickListener {
+            finish() // Esto cierra esta actividad y vuelve a la anterior
         }
 
     }
@@ -109,4 +115,5 @@ class MainActivity : AppCompatActivity() {
             mHandler.postDelayed(this, 1000) // Repite cada segundo
         }
     }
+
 }

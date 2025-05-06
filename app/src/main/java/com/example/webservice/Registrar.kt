@@ -56,6 +56,10 @@ class Registrar : AppCompatActivity() {
                 }
             }
         }
+        val btnVolver: Button = findViewById(R.id.btnVolver)
+        btnVolver.setOnClickListener {
+            finish() // Esto cierra esta actividad y vuelve a la anterior
+        }
     }
 
     private fun esEmailValido(email: String): Boolean {
