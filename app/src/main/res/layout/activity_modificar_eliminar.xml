@@ -9,12 +9,13 @@
 
     <EditText
         android:id="@+id/txtnombremod"
-        android:layout_width="380dp"
-        android:layout_height="51dp"
+        android:layout_width="361dp"
+        android:layout_height="45dp"
         android:layout_margin="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:hint="Nombres"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -91,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:text="Modifica o Elimina"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

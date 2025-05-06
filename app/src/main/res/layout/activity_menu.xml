@@ -8,48 +8,65 @@
     tools:context=".Menu">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="144dp"
-        android:layout_height="137dp"
-        android:layout_marginTop="56dp"
+        android:id="@+id/fondo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/smashfondo"
+        android:alpha="0.9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#50000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/titulologin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:gravity="center"
+        android:text="Bienvenido a CRUD + IOT"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="343dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iot" />
+
+        app:srcCompat="@drawable/smashfuego" />
 
     <Button
         android:id="@+id/btnRegistrar"
         android:layout_width="230dp"
         android:layout_height="60dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="4dp"
         android:text="Registrar Usuarios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <Button
-        android:id="@+id/btnMostrarUsuarios"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:text="Mostrar Usuarios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
-
-    <Button
-        android:id="@+id/buttoncapture"
-        android:layout_width="230dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:text="Capturar Datos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMostrarUsuarios" />
 
     <Button
         android:id="@+id/buttonabout"
@@ -58,8 +75,31 @@
         android:text="Acerca De"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttoncapture"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnMostrarUsuarios"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:text="Mostrar Usuarios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
+
+    <Button
+        android:id="@+id/buttoncapture"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="4dp"
+        android:text="Capturar Datos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMostrarUsuarios" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,8 @@
 
     <EditText
         android:id="@+id/txtnombre"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_width="370dp"
+        android:layout_height="44dp"
         android:layout_margin="16dp"
         android:layout_marginTop="32dp"
         android:hint="Nombres"
@@ -18,8 +18,8 @@
 
     <EditText
         android:id="@+id/txtapellido"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_width="374dp"
+        android:layout_height="54dp"
         android:layout_margin="16dp"
         android:hint="Apellidos"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,6 +90,7 @@
         android:layout_height="54dp"
         android:layout_marginTop="148dp"
         android:text="Registrar Usuario"
+        android:textColor="@color/colorBotonTexto"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

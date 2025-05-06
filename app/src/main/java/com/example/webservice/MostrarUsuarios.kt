@@ -19,6 +19,17 @@ class MostrarUsuarios : AppCompatActivity() {
         listado = findViewById(R.id.listaUsuarios)
         searchView = findViewById(R.id.searchView)
 
+        val searchTextId = searchView.context.resources.getIdentifier("android:id/search_src_text", null, null)
+        val searchText = searchView.findViewById<EditText>(searchTextId)
+        searchText.setHintTextColor(android.graphics.Color.BLACK)
+        searchText.setTextColor(android.graphics.Color.BLACK)
+
+        val searchIconId = searchView.context.resources.getIdentifier("android:id/search_mag_icon", null, null)
+        val searchIcon = searchView.findViewById<ImageView>(searchIconId)
+        searchIcon.setColorFilter(android.graphics.Color.BLACK)
+
+
+
         cargarLista()
 
         listado.setOnItemClickListener { _, _, position, _ ->
