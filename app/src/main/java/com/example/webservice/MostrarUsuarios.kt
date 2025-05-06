@@ -1,8 +1,6 @@
 package com.example.webservice
 
-import android.content.ContentValues
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -20,9 +18,8 @@ class MostrarUsuarios : AppCompatActivity() {
 
         listado = findViewById(R.id.listaUsuarios)
 
-        // Cargar los usuarios desde la base de datos
         CargarLista()
-        // Configurar el listener para el clic en un elemento de la lista
+
         listado.onItemClickListener =
             AdapterView.OnItemClickListener { _, _, position, _ ->
                 val item = listausuario[position]
@@ -32,13 +29,17 @@ class MostrarUsuarios : AppCompatActivity() {
                     val nombre = datos[1]
                     val apellido = datos[2]
 
-                    // Obtener la clave desde la base de datos (sin mostrarla)
                     val helper = ConexionDbHelper(this)
                     val db = helper.readableDatabase
-                    val cursor = db.rawQuery("SELECT clave FROM USUARIOS WHERE id = ?", arrayOf(idusu.toString()))
+
+                    // Obtener clave y email del usuario con ID dado
+                    val cursor = db.rawQuery("SELECT clave, email FROM USUARIOS WHERE id = ?", arrayOf(idusu.toString()))
                     var clave = ""
+                    var email = ""
+
                     if (cursor.moveToFirst()) {
                         clave = cursor.getString(0)
+                        email = cursor.getString(1)
                     }
                     cursor.close()
                     db.close()
@@ -47,13 +48,12 @@ class MostrarUsuarios : AppCompatActivity() {
                         putExtra("Id", idusu)
                         putExtra("Nombre", nombre)
                         putExtra("Apellido", apellido)
+                        putExtra("Email", email)
                         putExtra("clave", clave)
                     }
                     startActivity(intent)
                 }
             }
-
-
     }
 
     override fun onStart() {
@@ -61,17 +61,22 @@ class MostrarUsuarios : AppCompatActivity() {
         CargarLista()
     }
 
+    private fun CargarLista() {
+        listausuario = listaUsuario()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listausuario)
+        listado.adapter = adapter
+    }
 
-    // Método para obtener los usuarios desde la base de datos
     private fun listaUsuario(): ArrayList<String> {
         val datos = ArrayList<String>()
         val helper = ConexionDbHelper(this)
         val db = helper.readableDatabase
 
-        val sql = "SELECT * FROM USUARIOS"
+        val sql = "SELECT id, nombre, apellido FROM USUARIOS"
         val c = db.rawQuery(sql, null)
         if (c.moveToFirst()) {
             do {
+                // Solo mostramos ID, nombre y apellido
                 val linea = "${c.getInt(0)} ${c.getString(1)} ${c.getString(2)}"
                 datos.add(linea)
             } while (c.moveToNext())
@@ -79,12 +84,5 @@ class MostrarUsuarios : AppCompatActivity() {
         c.close()
         db.close()
         return datos
-    }
-
-    // Método para cargar la lista de usuarios en el ListView
-    private fun CargarLista() {
-        listausuario = listaUsuario() // Cargar los usuarios
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listausuario)
-        listado.adapter = adapter // Asignamos el adaptador al ListView
     }
 }

@@ -7,9 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import cn.pedant.SweetAlert.SweetAlertDialog
 
 lateinit var nom: EditText
 lateinit var ape: EditText
+lateinit var email: EditText
 lateinit var clav: EditText
 lateinit var repclav: EditText
 
@@ -21,48 +23,113 @@ class ModificarEliminar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_modificar_eliminar)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Inicialización de los campos
         nom = findViewById(R.id.txtnombremod)
         ape = findViewById(R.id.txtapellidomod)
+        email = findViewById(R.id.txtemailmod)
         clav = findViewById(R.id.txtclavemod)
         repclav = findViewById(R.id.txtrepclavemod)
         mod = findViewById(R.id.btn_modificar)
         elim = findViewById(R.id.btn_eliminar)
 
+        // Obtener datos del Intent
         val idusu = intent.getIntExtra("Id", 0)
         val nombre = intent.getStringExtra("Nombre") ?: ""
         val apellido = intent.getStringExtra("Apellido") ?: ""
+        val correo = intent.getStringExtra("Email") ?: ""
         val clave = intent.getStringExtra("clave") ?: ""
-        val repclave = intent.getStringExtra("clave") ?: ""
 
+        // Pre-llenar los campos con los datos actuales
         nom.setText(nombre)
         ape.setText(apellido)
+        email.setText(correo)
         clav.setText(clave)
-        repclav.setText(repclave)
+        repclav.setText(clave)
 
+        // Modificar los datos
         mod.setOnClickListener {
-            modificar(idusu, nom.text.toString(), ape.text.toString())
-            onBackPressedDispatcher.onBackPressed()
+            val nombreTxt = nom.text.toString().trim()
+            val apellidoTxt = ape.text.toString().trim()
+            val emailTxt = email.text.toString().trim()
+            val claveTxt = clav.text.toString().trim()
+            val repClaveTxt = repclav.text.toString().trim()
+
+            when {
+                // Verificar si algún campo está vacío
+                nombreTxt.isBlank() -> {
+                    mostrarAlerta("Error", "El nombre no puede estar vacío.")
+                }
+                apellidoTxt.isBlank() -> {
+                    mostrarAlerta("Error", "El apellido no puede estar vacío.")
+                }
+                emailTxt.isBlank() -> {
+                    mostrarAlerta("Error", "El correo electrónico no puede estar vacío.")
+                }
+                claveTxt.isBlank() -> {
+                    mostrarAlerta("Error", "La contraseña no puede estar vacía.")
+                }
+                repClaveTxt.isBlank() -> {
+                    mostrarAlerta("Error", "Debe repetir la contraseña.")
+                }
+                claveTxt != repClaveTxt -> {
+                    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText("Error")
+                        .setContentText("Las contraseñas no coinciden.")
+                        .show()
+                }
+                else -> {
+                    modificar(idusu, nombreTxt, apellidoTxt, emailTxt, claveTxt)
+                    SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Modificado")
+                        .setContentText("Datos actualizados correctamente")
+                        .setConfirmClickListener {
+                            it.dismiss()
+                            onBackPressedDispatcher.onBackPressed()
+                        }
+                        .show()
+                }
+            }
         }
+
+        // Eliminar los datos
         elim.setOnClickListener {
             eliminar(idusu)
-            onBackPressedDispatcher.onBackPressed()
+            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Eliminado")
+                .setContentText("Usuario eliminado correctamente")
+                .setConfirmClickListener {
+                    it.dismiss()
+                    onBackPressedDispatcher.onBackPressed()
+                }
+                .show()
         }
-
-
     }
 
-    private fun modificar(id: Int, nombre: String, apellido: String) {
+    // Función para mostrar alertas de error
+    private fun mostrarAlerta(titulo: String, mensaje: String) {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText(titulo)
+            .setContentText(mensaje)
+            .show()
+    }
+
+    // Función para modificar los datos en la base de datos
+    private fun modificar(id: Int, nombre: String, apellido: String, correo: String, clave: String) {
         val helper = ConexionDbHelper(this)
         val db = helper.writableDatabase
-        val sql = "UPDATE USUARIOS SET NOMBRE='$nombre', APELLIDO='$apellido' WHERE ID=$id"
+        val sql = "UPDATE USUARIOS SET NOMBRE='$nombre', APELLIDO='$apellido', EMAIL='$correo', CLAVE='$clave' WHERE ID=$id"
         db.execSQL(sql)
         db.close()
     }
+
+    // Función para eliminar el usuario
     private fun eliminar(id: Int) {
         val helper = ConexionDbHelper(this)
         val db = helper.writableDatabase
@@ -70,5 +137,4 @@ class ModificarEliminar : AppCompatActivity() {
         db.execSQL(sql)
         db.close()
     }
-
 }

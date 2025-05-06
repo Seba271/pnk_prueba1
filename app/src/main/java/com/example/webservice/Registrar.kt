@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
 
@@ -50,9 +49,7 @@ class Registrar : AppCompatActivity() {
                 }
                 else -> {
                     guardar(nombreText, apellidoText, emailText, claveText)
-                    val intent = Intent(this, MostrarUsuarios::class.java)
-                    startActivity(intent)
-                    finish()
+                    mostrarAlertaRegistroExitoso()
                 }
             }
         }
@@ -73,9 +70,8 @@ class Registrar : AppCompatActivity() {
                 put("Clave", cla)
             }
             db.insert("USUARIOS", null, datos)
-            Toast.makeText(this, "Datos ingresados sin problemas", Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
-            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            mostrarAlerta("Error", "No se pudo guardar el usuario: ${e.message}")
         } finally {
             db.close()
         }
@@ -104,6 +100,29 @@ class Registrar : AppCompatActivity() {
             .setTitleText("Correo inválido")
             .setContentText("Ingrese un correo electrónico válido.")
             .setConfirmText("Entendido")
+            .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
+            .show()
+    }
+
+    private fun mostrarAlertaRegistroExitoso() {
+        SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+            .setTitleText("Registro exitoso")
+            .setContentText("El usuario se ha registrado correctamente.")
+            .setConfirmText("Aceptar")
+            .setConfirmClickListener { dialog ->
+                dialog.dismissWithAnimation()
+                val intent = Intent(this, MostrarUsuarios::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .show()
+    }
+
+    private fun mostrarAlerta(titulo: String, mensaje: String) {
+        SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+            .setTitleText(titulo)
+            .setContentText(mensaje)
+            .setConfirmText("Aceptar")
             .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
             .show()
     }
