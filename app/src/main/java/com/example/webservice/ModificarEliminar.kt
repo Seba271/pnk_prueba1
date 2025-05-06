@@ -1,5 +1,6 @@
 package com.example.webservice
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -107,6 +108,15 @@ class ModificarEliminar : AppCompatActivity() {
             }
         }
 
+        val btnVolver: Button = findViewById(R.id.btnVolver)
+        btnVolver.setOnClickListener {
+            val intent = Intent(this, Menu::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+        }
+
+
         // Confirmar y eliminar usuario
         elim.setOnClickListener {
             SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
@@ -134,6 +144,8 @@ class ModificarEliminar : AppCompatActivity() {
         }
     }
 
+
+
     private fun mostrarAlerta(titulo: String, mensaje: String) {
         SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
             .setTitleText(titulo)
@@ -151,6 +163,9 @@ class ModificarEliminar : AppCompatActivity() {
         val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`])[A-Za-z\\d!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`]{8,}$")
         return regex.matches(clave)
     }
+
+
+
 
     private fun modificar(id: Int, nombre: String, apellido: String, correo: String, clave: String) {
         val helper = ConexionDbHelper(this)

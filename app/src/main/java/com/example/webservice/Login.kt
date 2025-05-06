@@ -23,7 +23,7 @@ class Login : AppCompatActivity() {
         val txtusuario = findViewById<EditText>(R.id.txtusuariologin)
         val txtclave = findViewById<EditText>(R.id.txtcontralogin)
         val loginButton = findViewById<Button>(R.id.btn_iniciar)
-        val registerButton = findViewById<Button>(R.id.button)
+
 
         loginButton.setOnClickListener {
             val usuarioIngresado = txtusuario.text.toString()
@@ -48,9 +48,6 @@ class Login : AppCompatActivity() {
             }
         }
 
-        registerButton.setOnClickListener {
-            val intent = Intent(this, Registrar::class.java)
-            startActivity(intent)
-        }
+
     }
 }

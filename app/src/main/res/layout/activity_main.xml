@@ -8,6 +8,35 @@
     android:background="@color/colorFondo"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/txt_humedad2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humedad"
+        android:textColor="@color/colorTextoGeneral"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_humedad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_temp"
+        app:layout_constraintVertical_bias="0.885" />
+
+    <TextView
+        android:id="@+id/txt_humedad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Humedad"
+        android:textColor="@color/colorTextoGeneral"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_temp"
+        app:layout_constraintVertical_bias="0.06" />
+
     <ImageView
         android:id="@+id/imagen_logo"
         android:layout_width="143dp"
@@ -31,19 +60,6 @@
         app:srcCompat="@drawable/tempbaja" />
 
     <TextView
-        android:id="@+id/txt_humedad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:text="Humedad"
-        android:textColor="@color/colorTextoGeneral"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_temp" />
-
-    <TextView
         android:id="@+id/txt_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,9 +76,9 @@
         android:id="@+id/imageView4"
         android:layout_width="121dp"
         android:layout_height="187dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.143"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagen_temp"
         app:srcCompat="@drawable/humedad" />
@@ -74,7 +90,7 @@
         android:layout_marginTop="28dp"
         android:text="Fecha"
         android:textColor="@color/colorTextoGeneral"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,12 +98,12 @@
 
     <ImageView
         android:id="@+id/imagen_ampolleta"
-        android:layout_width="118dp"
-        android:layout_height="160dp"
+        android:layout_width="82dp"
+        android:layout_height="115dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_fecha"
         app:layout_constraintVertical_bias="1.0"
@@ -105,6 +121,7 @@
         app:layout_constraintHorizontal_bias="0.777"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_fecha" />
+
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
@@ -113,9 +130,9 @@
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.038" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
