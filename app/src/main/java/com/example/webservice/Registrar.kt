@@ -62,9 +62,9 @@ class Registrar : AppCompatActivity() {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    // ✅ Validación de contraseña robusta
+    // ✅ Validación de contraseña robusta con más caracteres especiales aceptados
     private fun esClaveRobusta(clave: String): Boolean {
-        val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}$")
+        val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`])[A-Za-z\\d!@#\$%^&*()_+\\-={}|\\[\\]:;\"'<>,.?/~`]{8,}$")
         return regex.matches(clave)
     }
 
@@ -117,7 +117,7 @@ class Registrar : AppCompatActivity() {
     private fun mostrarAlertaClaveRobusta() {
         SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
             .setTitleText("Contraseña débil")
-            .setContentText("La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y un carácter especial.")
+            .setContentText("La contraseña debe tener al menos:\n• 8 caracteres\n• 1 mayúscula\n• 1 minúscula\n• 1 número\n• 1 carácter especial (como !, @, #, ., _ )")
             .setConfirmText("Entendido")
             .setConfirmClickListener { dialog -> dialog.dismissWithAnimation() }
             .show()
